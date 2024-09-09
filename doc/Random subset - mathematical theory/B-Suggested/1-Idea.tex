@@ -1,0 +1,14 @@
+\subsection{General Idea}
+	The principle of the suggested algorithm is to choose at each step the next smallest element of the subset. The probability to pick an element is such that each ordered subset has the same probability to be constructed. The elements are yielded one by one in the increasing order by the algorithm.\\\
+
+\subsection{Notations}
+Let $D_1$ denotes the first yielded element. It is an integer from $\nrange{1}{n + 1 - k}$ as there are at least $k - 1$ integer strictly greater than $D_1$ but lesser than or eqal to $n$.\\
+$X_1$ is the smallest element of the subset.
+\[X_1 = D_1\]
+
+For $i\in\nrange{2}{k - 1}$, let $X_i$ be the $i$-th smallest element of the subset and $D_i$ be the difference betweeen $X_{i}$ and $X_{i - 1}$.\\
+Instead of constructing the $(X_i)_{i\in\nrange{1}{k}}$ sequence, we will instead construct the $(D_i)_{i\in\nrange{1}{k}}$ sequence and derive $(X_i)_{i\in\nrange{1}{k}}$ from it.
+\[D_i = X_i - X_{i - 1} \Leftrightarrow X_i = \sum_{j = 1}^{i}{D_j}\]
+
+With the assertion $X_0 = 0$ almost surely, the previous formulas remain true for $i = 1$.
+

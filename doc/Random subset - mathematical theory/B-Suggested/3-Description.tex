@@ -1,0 +1,25 @@
+\begin{algorithm}
+	\caption{Random subset algorithm}
+	\begin{algorithmic}[1]
+			\BState \textit{Initialisation:}
+				\State X $ := 0$
+				\State n $:= N$ 
+				\State nOrig $:= N$ 
+				\State k $:= K$ 
+				\State kOrig $:= K$\\ 
+			
+			\BState \textit{Subset contruction:}
+				\For{$i = 1\rightarrow k$}
+					\State d $:=$ \verb|random_distance_generator|(n, k)
+					\State X $:=$ X + d
+					\State Print X
+					\State n $:=$ n - d  
+					\State k $:=$ k - 1\\
+				\EndFor
+			
+			\BState \textit{Return to initial state}
+				\State X $:= 0$
+				\State n $:=$ nOrig
+				\State k $:=$ kOrig
+	\end{algorithmic}
+\end{algorithm}

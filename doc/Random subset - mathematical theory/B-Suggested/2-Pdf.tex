@@ -1,0 +1,166 @@
+\subsection{Range of $D_i$}
+	
+	For $i\in\nrange{1}{k}$, there are at least $k - i$ elements in $\nrange{X_i + 1}{n}$.
+	\[k - i \leq \text{Card}\left(\nrange{X_i + 1}{n}\right)\]
+	\[\Leftrightarrow k - i \leq n - X_i\]
+	\[\Leftrightarrow k - i \leq n - X_{i - 1} + X_{i - 1} - X_i\]
+	\[\Leftrightarrow k - i \leq n - X_{i - 1} - D_i\]
+	\[\Leftrightarrow D_i \leq n - X_{i - 1} - k + i\]
+	\[\]
+	
+	Moreover, the $(X_i)_{i\in\nrange{0}{k}}$ sequence is strictly increasing by definition. Hence $1 \leq D_i$
+	
+	\[\boxed{D_i\in\nrange{1}{n - X_{i - 1} - k + i}}\]
+	
+\subsection{Probability density function}
+	\subsubsection{$D_1$}
+		
+		We want each oredered subset to have the same probability of being chosen. To achieve this goal, the probability of each $l\in\nrange{1}{n - k + 1}$ will be proportional to the number of subsets containing $l$ as their first element.\\\
+		
+		For $l\in \nrange{1}{n - k + 1}$, the number of subsets of $\nrange{1}{n}$ containing $k$ elements and having $l$ as their smallest elements is exactly the number of ways to choose $k - 1$ different numbers from $\nrange{l + 1}{n}$.
+		
+		\[\exists\alpha\in\Rbb_+^*, \forall l\in\nrange{1}{n - k + 1}, \quad \Pbb(D_1 = l) = \frac{\binom{n - l}{k - 1}}{\alpha}\]
+		\[\]
+		
+		\[D_1\in\nrange{1}{n - k + 1} \text{ a.s}\]
+		\[\Leftrightarrow \Pbb(D_1\in\nrange{1}{n - k + 1}) = 1\]
+		\[\Leftrightarrow \sum_{l = 1}^{n - k + 1}{\Pbb(D_1 = l)} = 1\]
+		\[\Leftrightarrow \sum_{l = 1}^{n - k + 1}{\frac{\binom{n - l}{k - 1}}{\alpha}} = 1\]
+		\[\Leftrightarrow \sum_{l = 1}^{n - k + 1}{\binom{n - l}{k - 1}} = \alpha\]
+		\[\Leftrightarrow \sum_{m = k - 1}^{n - 1}{\binom{m}{k - 1}} = \alpha\]
+		\[\Leftrightarrow \binom{n}{k} = \alpha\]
+		\[\Leftrightarrow \alpha = \binom{n}{k}\]
+		\[\]
+		
+		\[\boxed{\forall l\in\nrange{1}{n - k + 1}, \quad \Pbb(D_1 = l) = \frac{\binom{n - l}{k - 1}}{\binom{n}{k}}}\]
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%			
+		
+	\subsubsection{$D_i$}
+		Let $\Dcurs(n, k)$ be the probability distribution followed by $D_1$.\\\
+		
+		For $i\in\nrange{2}{k}$, $D_i$ actually follows a law similar to $D_1$ but with different parameters. Let $n_i$ and $k_i$ be those parameters\\
+		As there are $k - i + 1$ integers left to choose, we can easily see why $k_i = k - i + 1$\\
+		The maximum potential value for $D_i$ should be $n - X_{i - 1} - k + i$ and if $D_i\leadsto\Dcurs(n_i, k_i)$, the maximum potential value is $n_i - k_i + 1$.
+		
+		\[n - X_{i - 1} - k + i = n_i - k_i + 1\]
+		\[\Leftrightarrow n - X_{i - 1} - k + i = n_i - k + i - 1 + 1\]
+		\[\Leftrightarrow n_i = n - X_{i - 1}\]
+		
+		\[\boxed{D_i\leadsto\Dcurs(n - X_{i - 1}, k - i + 1)}\]
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%		
+		
+	\subsubsection{Verification}
+		Let us check that having $D_i\leadsto\Dcurs(n - X_{i - 1}, k - i + 1)$ for all $i\in\nrange{1}{k}$ leads to each ordered subset to be picked equiprobably.\\
+		
+		Let $(x_1, ..., x_k)$ be an ordered subset of $\nrange{1}{n}$ ($x_1 < ... < x_k$)
+		
+		\[\Pbb(X_1 = x_1, ..., X_k = x_k) = \Pbb(X_1 = x_1)\frac{\Pbb(X_1 = x_1, ..., X_k = x_k)}{\Pbb(X_1 = x_1)}\]
+		\[= \Pbb(X_1 = x_1)\prod_{i = 2}^{k}{\frac{\Pbb(X_1 = x_1, ..., X_i = x_i)}{\Pbb(X_1 = x_1, ..., X_{i - 1} = x_{i - 1})}}\]
+		\[= \Pbb(X_1 = x_1)\prod_{i = 2}^{k}{\Pbb\left(X_i = x_i | X_1 = x_1, ..., X_{i - 1} = x_{i - 1}\right)}\]
+		\[= \Pbb(X_1 = x_1)\prod_{i = 2}^{k}{\Pbb\left(D_i = x_i - x_{i - 1} | X_1 = x_1, ..., X_{i - 1} = x_{i - 1}\right)}\]
+		\[= \Pbb(X_1 = x_1)\prod_{i = 2}^{k}{\Pbb\left(D_i = x_i - x_{i - 1} | X_{i - 1} = x_{i - 1}\right)}\]
+		\[= \frac{\binom{n - x_1}{k - 1}}{\binom{n}{k}}\prod_{i = 2}^{k}{\frac{\binom{n - x_{i - 1} - (x_i - x_{i - 1})}{k - i}}{\binom{n - x_{i - 1}}{k - i + 1}}}\]
+		\[= \frac{\binom{n - x_1}{k - 1}}{\binom{n}{k}}\prod_{i = 2}^{k}{\frac{\binom{n  - x_i }{k - i}}{\binom{n - x_{i - 1}}{k - (i - 1)}}}\]
+		\[= \frac{\binom{n - x_1}{k - 1}}{\binom{n}{k}}\frac{\binom{n  - x_k }{k - k}}{\binom{n - x_{2 - 1}}{k - 2 + 1}}\]
+		\[= \frac{\binom{n - x_1}{k - 1}}{\binom{n}{k}}\frac{\binom{n  - x_k }{0}}{\binom{n - x_1}{k - 1}}\]
+		\[= \frac{1}{\binom{n}{k}}\frac{\binom{n - x_1}{k - 1}}{\binom{n - x_1}{k - 1}}\]
+		\[= \frac{1}{\binom{n}{k}}\]
+		
+		We have the expected result
+		
+	
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Cumulative distribution function}
+	\[\forall l\in\nrange{1}{n - k + 1}\quad \Pbb(D_1\leq l) = 1 - \Pbb(D_1 > l)\]
+	\[ = 1 - \sum_{q = l + 1}^{n - k + 1}{\Pbb(D_1 = q)}\]
+	\[ = 1 - \frac{\sum_{q = l + 1}^{n - k + 1}{\binom{n - q}{k - 1}}}{\binom{n}{k}}\]
+	\[ = 1 - \frac{\sum_{m = k - 1}^{n - l - 1}{\binom{m}{k - 1}}}{\binom{n}{k}}\]
+	\[ = 1 - \frac{\binom{n - l}{k}}{\binom{n}{k}}\]
+	
+	\[\boxed{\forall l\in\nrange{1}{n - k + 1}\quad \Pbb(D_1\leq l) = 1 -\frac{\binom{n - l}{k}}{\binom{n}{k}}}\]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Computation}
+	\subsubsection{Naive version}
+		Let $F$ denote the cumulative distribution function associated to the $\Dcurs(n, k)$ distribution.\\
+		Let $U$ be a random variable following a continuous uniform distribution.\\\
+		Let $D$ be a random variable such that
+		
+		\[D = l \Leftrightarrow F(l - 1) \leq U < F(l)\]
+		
+		As $U\in[0, 1]$ and $F$ is strictly increasing, $D$ is always properly defined.
+		
+		\[\forall l\in\nrange{1}{n - k + 1}, \quad \Pbb(D = l) = = \Pbb\left(F(l - 1) \leq U < F(l) \right)\]
+		\[ = F(l) - F(l - 1)\]
+		\[ = \Pbb(D_1 \leq l) - \Pbb(D_1 \leq l - 1)\]
+		\[ = \Pbb(l - 1 < D_1 \leq l)\]
+		\[ = \Pbb(D_1 = l)\]
+		
+		\[\boxed{D\leadsto \Dcurs(n, k)}\]
+		
+		Unfortunately, this method requires the computation of binomial coefficients which can hardly be done in an efficient way, especially when $n$ is large.
+		
+	\subsubsection{Actual method}
+		To counter the problem due to the size of the values to compute, we use the $\ln$ function to only deal with values of reasonable size.\\
+		To facilitate computation, we will manipulate $1 - F(l)$ instead of $F(l)$.\\
+		With the same notations as previously,
+		
+		\[D = l \Leftrightarrow F(l - 1) \leq U < F(l)\]
+		\[\Leftrightarrow 1 - F(l)\leq 1 - U <  1 - F(l - 1)\]
+		\[\Leftrightarrow \ln\left(1 - F(l)\right)\leq \ln\left(1 - U\right) <  \ln\left(1 - F(l - 1)\right)\]
+		\[\Leftrightarrow -\ln\left(1 - F(l - 1)\right)\leq -\ln\left(1 - U\right) < -\ln\left(1 - F(l)\right) \]
+		\[\]
+		
+		
+		Let $V = -\ln\left(1 - U\right)$\\
+		\[\forall v\in\Rbb_+\]
+		\[\Pbb(V\leq v) = \Pbb(-\ln\left(1 - U\right)\leq v)\]
+		\[= \Pbb(-v\leq \ln\left(1 - U\right))\]
+		\[= \Pbb(e^{-v} \leq 1 - U)\]
+		\[= \Pbb(U \leq 1 - e^{-v})\]
+		\[= 1 - e^{-v}\]
+		
+		$V$ follows an exponential distribution with parameter $1$.
+		\[V\leadsto\Ecurs(1)\]
+		\[\boxed{D = l \quad \Leftrightarrow \quad -\ln\left(1 - F(l - 1)\right)\leq V < -\ln\left(1 - F(l)\right)}\]
+		
+	\subsubsection{Rewriting the condition}
+		\[\forall l\in\nrange{1}{n - k + 1}, \quad F(l) = 1 -\frac{\binom{n - l}{k}}{\binom{n}{k}}\]
+		\[\Leftrightarrow 1 - F(l) = \frac{\binom{n - l}{k}}{\binom{n}{k}}\]
+		\[= \frac{(n - l)!}{k!(n - l - k)!}\frac{k!(n - k)!}{n!}\]
+		\[= \frac{(n - l)!}{(n - l - k)!}\frac{(n - k)!}{n!}\]
+		\[\Leftrightarrow -\ln\left(1 - F(l)\right) = -\ln\left((n - l)!\right)+\ln\left((n - l - k)!\right) -\ln\left((n - k)!\right) + \ln\left(n!\right)\]
+		\[\]
+		
+		\[\text{Let } g: m\mapsto\ln(m!) - \ln((m - k)!)\]
+		
+		Then
+		\[\boxed{-\ln\left(1 - F(l)\right) = -g(n - l) + g(n)}\]
+		\[\]
+		
+		\[D = l \quad \Leftrightarrow \quad -g(n - l + 1) + g(n)\leq V < -g(n - l) + g(n)\]
+		\[\Leftrightarrow \quad -g(n - l + 1) \leq V - g(n)< -g(n - l) \]
+		\[\Leftrightarrow \quad g(n - l)\leq g(n) - V < g(n - l + 1)\]
+		\[\boxed{D = l \quad \Leftrightarrow \quad g(n - l)\leq g(n - k) - V < g(n - l + 1)}\]
+	
+	\subsubsection{Approximations}
+		If $m\in\nrange{1}{20}$ we compute $\ln(m!)$ with the following formula:
+		\[\ln(m!) = \ln\left(\prod_{q = 1}^{m}{q}\right) = \sum_{q = 1}^{m}{\ln(q)}\]
+		\[\]
+		
+		If $m > 20$, we use the Striling's approximation
+		\[\ln(m!)\approx \left(m+\frac{1}{2}\right)\ln(m) - m + \frac{1}{2}\ln(2\pi) + \frac{1}{12m} - \frac{1}{360m^3}\]
+		
+	\subsubsection{Retrieve $l$}
+		\[l\mapsto F(l) \text{ is strictly increasing}\]
+		\[l\mapsto 1 - F(l) \text{ is strictly decreasing}\]
+		\[l\mapsto -\ln\left(1 - F(l)\right) \text{ is strictly increasing}\]
+		\[l\mapsto g(n) - g(n - l) \text{ is strictly increasing}\]
+		\[l\mapsto - g(n - l) \text{ is strictly increasing}\]
+		\[l\mapsto g(n - l) \text{ is strictly decreasing}\]
+		\[l\mapsto g(l) \text{ is strictly increasing}\]
+		
+		Hence, a dichotomy allows us to retrieve the value of $l$ verifiying
+		\[g(n - l)\leq g(n) - V < g(n - l + 1)\]

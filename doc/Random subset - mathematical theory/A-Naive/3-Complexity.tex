@@ -1,0 +1,40 @@
+\subsubsection{Space complexity}
+	In the previous pseudo-code, \verb|subset| is a stack which size at the end of the algorithm is $k$.
+	
+	\[\boxed{\text{Space complexity}: \Theta(k)}\]
+	
+
+\subsubsection{Time complexity}
+	For $i\in \nrange{1}{k}$, \\
+	When choosing the $i$-th element of the subset, $i - 1$ integers have already been chosen, hence the probability that the integer yielded by the random generator has not been chosen yet is $\frac{n + 1 - i}{n}$\\
+	
+	We generate random numbers until a new one is yielded. Let $R_i$ be the number of random number generations necessary to obtain the $n$-th element of the subset. $R_i$ follows a geometric distribution with parameter $\frac{n + 1 - i}{n}$.
+	\[R_i \leadsto \Gcurs\left(\frac{n + 1 - i}{n}\right)\]
+	
+	Verifying if a generated number is already in \verb|subset| is an operation in $\Theta(i)$ time complexity
+	
+	The average time complexity is given by the following formula:
+	
+	\[\sum_{i = 1}^{k}{i\times\Ebb[R_i]} = \sum_{i = 1}^{k}{i\times\frac{n}{n + 1 - i}} = \sum_{j = n + 1 - k}^{n}{(n + 1 - j)\times\frac{n}{j}}\]
+	
+	\[= (n + 1)\times\left(\sum_{j = n + 1 - k}^{n}{\frac{1}{j}}\right) - n\times\left(\sum_{j = n + 1 - k}^{n}{1}\right)\]
+	\[ = n\left((n + 1)\left(H_n - H_{n - k}\right) - k\right)\]
+	
+	where $H_n = \sum_{i = 1}^{n}{\frac{1}{i}}$ is the $n$-th harmonic number\\\
+	
+	%\[\boxed{\text{Average time complexity}: \Theta\left(n\left((n + 1)\left(H_n - H_{n - k}\right) - k\right)\right)}\]
+	%\[\]
+	
+	If both $n$ and $n - k$ are big enough, we can write
+	\[\boxed{\text{Average time complexity}: \Ocurs\left(n^2\ln\left(\frac{n}{n - k}\right)\right)}\]
+	\[\]
+	
+	If we minor each $\Ebb[R_i]$ by 1, we can minor the expression by $\frac{k(k+1)}{2}$. Hence
+	\[\boxed{\text{Average time complexity}: \Omega\left(k^2\right)}\]
+	\[\]
+	
+	
+	%\begin{rem}
+		%If a boolean array was used, the space complexity would have been $\Ocurs(n)$ and the average time complexity would have been $\Ocurs\left(n\left(H_n - H_{n - k}\right)\right)$
+	%\end{rem}
+	
