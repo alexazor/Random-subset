@@ -1,0 +1,85 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Theorem-like environments
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\theoremstyle{plain}
+\newtheorem{theo}{Theorem}[section]
+\newtheorem{prop}{Proposition}[section]
+\newtheorem{lem}{Lemma}[section]
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}[section]
+\newtheorem{exmp}{Example}[section]
+\newtheorem{assum}{Assumption}
+
+\theoremstyle{remark}
+\newtheorem*{rem}{Remark}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Cursive letters
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\Acurs}{\mathcal{A}}
+\newcommand{\Bcurs}{\mathcal{B}}
+\newcommand{\Dcurs}{\mathcal{D}}
+\newcommand{\Ecurs}{\mathcal{E}}
+\newcommand{\Gcurs}{\mathcal{G}}
+\newcommand{\Lcurs}{\mathcal{L}}
+\newcommand{\Mcurs}{\mathcal{M}}
+\newcommand{\Ncurs}{\mathcal{N}}
+\newcommand{\Ocurs}{\mathcal{O}}
+\newcommand{\Pcurs}{\mathcal{P}}
+\newcommand{\Rcurs}{\mathcal{R}}
+\newcommand{\Scurs}{\mathcal{S}}
+\newcommand{\Vcurs}{\mathcal{V}}
+\newcommand{\Xcurs}{\mathcal{X}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%Bold letters
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\onebf}{\mathbf{1}}
+
+%\newcommand{\Abf}{\mathbf{A}}
+\newcommand{\Ibf}{\mathbf{I}}
+%\newcommand{\Tbf}{\mathbf{T}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% BB letters
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\Ebb}{\mathbb{E}}
+\newcommand{\Hbb}{\mathbb{H}}
+\newcommand{\Nbb}{\mathbb{N}}
+\newcommand{\Pbb}{\mathbb{P}}
+\newcommand{\Qbb}{\mathbb{Q}}
+\newcommand{\Rbb}{\mathbb{R}}
+\newcommand{\Vbb}{\mathbb{V}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Functions name
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\myfct}[1]{\text{#1}}
+\newcommand{\diag}{\myfct{diag}}
+\newcommand{\softmax}{\myfct{softmax}}
+\newcommand{\sign}[1]{\myfct{sign}\left(#1\right)}
+\newcommand{\dif}{\myfct{d}}
+%\newcommand{\rank}{\myfct{rank}}
+
+%\newcommand{\myfctu}[2]{\underset{#1}{\text{#2}}~}
+%\newcommand{\argmin}[1]{\myfctu{#1}{argmin}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Other
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\scal}[2]{\left\langle#1\bigg\rvert#2\right\rangle}
+%\newcommand{\norm}[1]{\left\|#1\right\|}
+\newcommand{\ens}[2]{\left\{#1~\Big\rvert~#2\right\}}
+\newcommand{\nrange}[2]{\llbracket#1, #2\rrbracket}
+%\newcommand{\abs}[1]{\left|#1\right|}
+%\newcommand{\pdv}[2]{\frac{\partial#1}{\partial#2}}
+\newcommand{\floor}[1]{\left\lfloor#1\right\rfloor}
+\newcommand{\sepline}{\[\] ---------------------------------------------------------------------------------------------------------------------------------------------------\\}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Specific
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\makeatletter
+\def\BState{\State\hskip-\ALG@thistlm}
+\makeatother

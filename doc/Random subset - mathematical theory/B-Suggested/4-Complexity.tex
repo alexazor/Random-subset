@@ -1,0 +1,12 @@
+\subsection{Space complexity}
+	Only \verb|n, nOrig, k, kOrig| and \verb|X| are kept in memory.
+	
+	\[\boxed{\text{Space complexity}: \Ocurs(1)}\]
+	
+\subsection{Time complexity}
+	To generate a realisation of $D_i$, we need to find the value of $d$ that verifies
+		\[g(n - d)\leq g(n) - V < g(n - d + 1)\]
+		
+	With the use of the Stirling approximation, the computation of the $g$ function can be done in a $\Ocurs(1)$ complexity. As $g$ is stricly increasing, a dichotomy algorithm can be use for that matter. As the value of $d$ is within $\nrange{1}{n}$, for each generation of $D_i$, the generation of each one of them can be done in a $\Ocurs(\ln(n))$. Hence:
+	
+	\[\boxed{\text{Time complexity}: \Ocurs(k\ln(n))}\]

@@ -1,0 +1,16 @@
+\begin{algorithm}
+	\caption{Naive random subset algorithm}
+	\begin{algorithmic}[1]
+			\BState \textit{Initialisation:}
+				\State \verb|subset| $ := \varnothing$\\
+			
+			\BState \textit{Subset contruction:}
+				\cprotect\While{size(\verb|subset|) $< k$}
+					\State \verb|candidateInteger| $:=$ \verb|random_integer_generator(1, n)|
+					
+					\cprotect\If {\verb|candidateInteger| $\notin $ \verb|subset|}
+						\State\verb|subset| $ \gets $ \verb|candidateInteger|
+					\EndIf
+				\EndWhile
+	\end{algorithmic}
+\end{algorithm}
